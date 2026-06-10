@@ -13,7 +13,11 @@
                         <img src="{{ $product->image }}" class="card-img-top" alt="{{ $product->name }}">
 
                         <div class="card-body">
-                            <h5 class="card-title">{{ $product->name }}</h5>
+                            <h5 class="card-title">
+                                <a href="{{ url('/products/' . $product->id) }}" class="text-decoration-none">
+                                    {{ $product->name }}
+                                </a>
+                            </h5>
 
                             <p class="card-text">
                                 {{ Str::limit($product->description, 80) }}
