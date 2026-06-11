@@ -27,6 +27,10 @@
                         <a class="nav-link" href="{{ url('/products') }}">Products</a>
                     </li>
 
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('cart.index') }}">Cart</a>
+                    </li>
+
                     @auth
                         <li class="nav-item">
                             <span class="nav-link text-white-50">Hi, {{ Auth::user()->name }}</span>

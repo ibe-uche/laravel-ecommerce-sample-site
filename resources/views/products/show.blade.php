@@ -25,6 +25,11 @@
                     Stock: {{ $product->stock }}
                 </p>
 
+                <form method="POST" action="{{ route('cart.add', $product->id) }}">
+                    @csrf
+                    <button type="submit" class="btn btn-primary">Add to Cart</button>
+                </form>
+
             </div>
 
         </div>

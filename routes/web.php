@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\CartController;
 
 
 
@@ -28,8 +29,12 @@ Route::get('/products/{id}', [ProductController::class, 'show']);
 // Auth routes
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register')->middleware('guest');
 Route::post('/register', [RegisterController::class, 'register'])->middleware('guest');
-
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'login'])->middleware('guest');
-
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
+
+// Cart routes
+Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+Route::post('/cart/add/{product}', [CartController::class, 'add'])->name('cart.add');
+Route::post('/cart/update/{id}', [CartController::class, 'update'])->name('cart.update');
+Route::post('/cart/remove/{id}', [CartController::class, 'remove'])->name('cart.remove');

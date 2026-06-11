@@ -27,6 +27,11 @@
                                 ₦{{ number_format($product->price) }}
                             </p>
 
+                            <form method="POST" action="{{ route('cart.add', $product->id) }}">
+                                @csrf
+                                <button type="submit" class="btn btn-primary w-100">Add to Cart</button>
+                            </form>
+
                         </div>
                     </div>
                 </div>
