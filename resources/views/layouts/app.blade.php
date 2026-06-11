@@ -35,6 +35,13 @@
                         <li class="nav-item">
                             <span class="nav-link text-white-50">Hi, {{ Auth::user()->name }}</span>
                         </li>
+
+                        @if (Auth::user()->is_admin)
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('admin.dashboard') }}">Admin</a>
+                            </li>
+                        @endif
+
                         <li class="nav-item">
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
