@@ -159,6 +159,7 @@ return [
         /*
          * Package Service Providers...
          */
+        Ytake\LaravelSmarty\SmartyServiceProvider::class,
 
         /*
          * Application Service Providers...

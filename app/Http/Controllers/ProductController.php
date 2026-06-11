@@ -10,7 +10,10 @@ class ProductController extends Controller
     {
         $products = Product::all();
 
-        return view('products.index', compact('products'));
+        // return view('products.index', compact('products'));
+
+        // Smarty version
+        return view('products.index_smarty', compact('products') + ['csrf_token' => csrf_token()]);
     }
 
     public function show($id)
