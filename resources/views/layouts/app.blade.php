@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-Commerce App</title>
+    <title>@yield('title', 'ShopEasy')</title>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -17,8 +17,35 @@
                 ShopEasy
             </a>
 
-            <div class="navbar-nav ms-auto">
-                <a class="nav-link text-white" href="#">Products</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/products') }}">Products</a>
+                    </li>
+
+                    @auth
+                        <li class="nav-item">
+                            <span class="nav-link text-white-50">Hi, {{ Auth::user()->name }}</span>
+                        </li>
+                        <li class="nav-item">
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <button type="submit" class="btn btn-link nav-link">Logout</button>
+                            </form>
+                        </li>
+                    @else
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login') }}">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('register') }}">Register</a>
+                        </li>
+                    @endauth
+                </ul>
             </div>
         </div>
     </nav>
